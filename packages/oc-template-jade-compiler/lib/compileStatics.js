@@ -15,6 +15,10 @@ module.exports = (options, callback) => {
     return callback(null, 'ok');
   }
 
+  if (!Array.isArray(staticDirectories)) {
+    staticDirectories = [staticDirectories];
+  }
+
   async.eachSeries(
     staticDirectories,
     copyDirectory.bind(null, options),
